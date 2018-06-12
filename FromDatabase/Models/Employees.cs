@@ -16,6 +16,7 @@ namespace FromDatabase.Models
         public int CompanyId { get; set; }
         public int CreatedByEmployeeId { get; set; }
         public bool? IsPotentialBuyer { get; set; }
+        public int? MadeUpSomething { get; set; }
 
         public Companies Company { get; set; }
     }

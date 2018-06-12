@@ -4,14 +4,16 @@ using FromDatabase.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FromDatabase.Migrations
 {
     [DbContext(typeof(SysKitCodeFirstDemoContext))]
-    partial class SysKitCodeFirstDemoContextModelSnapshot : ModelSnapshot
+    [Migration("20180612200542_FromDb_First_Real_Migration")]
+    partial class FromDb_First_Real_Migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
