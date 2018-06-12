@@ -15,3 +15,6 @@ Use these:
 https://weblogs.asp.net/senthil/code-first-ef-core
 https://codingblast.com/entityframework-core-idesigntimedbcontextfactory/
 https://joonasw.net/view/aspnet-core-2-configuration-changes
+
+From Database:
+Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=SysKitCodeFirstDemo;Trusted_Connection=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
