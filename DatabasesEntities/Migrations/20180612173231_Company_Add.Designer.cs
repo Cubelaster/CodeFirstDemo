@@ -4,14 +4,16 @@ using DatabasesEntities.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatabasesEntities.Migrations
 {
     [DbContext(typeof(SysKitContext))]
-    partial class SysKitContextModelSnapshot : ModelSnapshot
+    [Migration("20180612173231_Company_Add")]
+    partial class Company_Add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,13 +27,13 @@ namespace DatabasesEntities.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CreatedByEmployeeId");
+                    b.Property<int>("CreatedBy");
 
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<DateTime?>("DateModified");
 
-                    b.Property<int?>("ModifiedByEmployeeId");
+                    b.Property<int?>("ModifiedBy");
 
                     b.Property<string>("Name");
 
@@ -42,10 +44,6 @@ namespace DatabasesEntities.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
-
-                    b.HasData(
-                        new { Id = 1, CreatedByEmployeeId = 1, DateCreated = new DateTime(2018, 6, 12, 21, 9, 48, 310, DateTimeKind.Local), Name = "SysKit", Status = 1, VatId = "Vat Id" }
-                    );
                 });
 
             modelBuilder.Entity("DatabasesEntities.Models.Employee", b =>
@@ -54,9 +52,7 @@ namespace DatabasesEntities.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CompanyId");
-
-                    b.Property<int>("CreatedByEmployeeId");
+                    b.Property<int>("CreatedBy");
 
                     b.Property<DateTime>("DateCreated");
 
@@ -66,31 +62,15 @@ namespace DatabasesEntities.Migrations
 
                     b.Property<string>("FirstName");
 
-                    b.Property<bool?>("IsPotentialBuyer");
-
                     b.Property<string>("LastName");
 
-                    b.Property<int?>("ModifiedByEmployeeId");
+                    b.Property<int?>("ModifiedBy");
 
                     b.Property<int>("Status");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CompanyId");
-
                     b.ToTable("Employees");
-
-                    b.HasData(
-                        new { Id = 1, CompanyId = 1, CreatedByEmployeeId = 1, DateCreated = new DateTime(2018, 6, 12, 21, 9, 48, 312, DateTimeKind.Local), FirstName = "David", LastName = "Čubela", Status = 1 }
-                    );
-                });
-
-            modelBuilder.Entity("DatabasesEntities.Models.Employee", b =>
-                {
-                    b.HasOne("DatabasesEntities.Models.Company", "Company")
-                        .WithMany("Employees")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

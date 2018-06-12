@@ -4,14 +4,16 @@ using DatabasesEntities.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatabasesEntities.Migrations
 {
     [DbContext(typeof(SysKitContext))]
-    partial class SysKitContextModelSnapshot : ModelSnapshot
+    [Migration("20180612185727_Employee_Company_Modify")]
+    partial class Employee_Company_Modify
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +33,7 @@ namespace DatabasesEntities.Migrations
 
                     b.Property<DateTime?>("DateModified");
 
-                    b.Property<int?>("ModifiedByEmployeeId");
+                    b.Property<int>("ModifiedByEmployeeId");
 
                     b.Property<string>("Name");
 
@@ -44,7 +46,7 @@ namespace DatabasesEntities.Migrations
                     b.ToTable("Companies");
 
                     b.HasData(
-                        new { Id = 1, CreatedByEmployeeId = 1, DateCreated = new DateTime(2018, 6, 12, 21, 9, 48, 310, DateTimeKind.Local), Name = "SysKit", Status = 1, VatId = "Vat Id" }
+                        new { Id = 1, CreatedByEmployeeId = 1, DateCreated = new DateTime(2018, 6, 12, 20, 57, 26, 532, DateTimeKind.Local), ModifiedByEmployeeId = 0, Name = "SysKit", Status = 1, VatId = "Vat Id" }
                     );
                 });
 
@@ -66,11 +68,9 @@ namespace DatabasesEntities.Migrations
 
                     b.Property<string>("FirstName");
 
-                    b.Property<bool?>("IsPotentialBuyer");
-
                     b.Property<string>("LastName");
 
-                    b.Property<int?>("ModifiedByEmployeeId");
+                    b.Property<int>("ModifiedByEmployeeId");
 
                     b.Property<int>("Status");
 
@@ -81,7 +81,7 @@ namespace DatabasesEntities.Migrations
                     b.ToTable("Employees");
 
                     b.HasData(
-                        new { Id = 1, CompanyId = 1, CreatedByEmployeeId = 1, DateCreated = new DateTime(2018, 6, 12, 21, 9, 48, 312, DateTimeKind.Local), FirstName = "David", LastName = "Čubela", Status = 1 }
+                        new { Id = 1, CompanyId = 1, CreatedByEmployeeId = 1, DateCreated = new DateTime(2018, 6, 12, 20, 57, 26, 537, DateTimeKind.Local), FirstName = "David", LastName = "Čubela", ModifiedByEmployeeId = 0, Status = 1 }
                     );
                 });
 

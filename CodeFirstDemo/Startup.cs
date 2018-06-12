@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using DatabasesEntities.Context;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -27,7 +29,10 @@ namespace CodeFirstDemo
             services.AddDbContext<SysKitContext>(options => options.UseSqlServer("SysKitCodeFirstDemo",
                 opts => opts.MigrationsAssembly("DatabasesEntities")));
 
-            services.AddMvc();
+            services.AddAutoMapper();
+
+            // TODO
+            services.AddMvc().AddFluentValidation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
