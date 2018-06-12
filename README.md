@@ -9,3 +9,9 @@ to Entity Framework and database.
 DAL is the only layer with direct access to DB/EF and BL will contain all
 of the logic.
 CodeFirstDemo handles all the View related stuff using React.
+
+
+Use these:
+https://weblogs.asp.net/senthil/code-first-ef-core
+https://codingblast.com/entityframework-core-idesigntimedbcontextfactory/
+https://joonasw.net/view/aspnet-core-2-configuration-changes
