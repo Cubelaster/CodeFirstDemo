@@ -24,3 +24,6 @@ Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=SysKitCodeFirstDemo;T
 Add-Migration InitialCreate –IgnoreChanges
 EF Core doesn't have it so initial migration is filled and update breaks. Comment it out. 
 
+Additionally, we need to register our new context in startup.
+After that, Package Manager needs explicit reference to context
+Update-Database -Context SysKitCodeFirstDemoContext
