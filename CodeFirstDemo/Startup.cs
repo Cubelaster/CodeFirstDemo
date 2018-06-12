@@ -29,6 +29,9 @@ namespace CodeFirstDemo
             services.AddDbContext<SysKitContext>(options => options.UseSqlServer("SysKitCodeFirstDemo",
                 opts => opts.MigrationsAssembly("DatabasesEntities")));
 
+            services.AddDbContext<SysKitContext>(options => options.UseSqlServer("SysKitCodeFirstDemoContext",
+                opts => opts.MigrationsAssembly("FromDatabase")));
+
             services.AddAutoMapper();
 
             // TODO
