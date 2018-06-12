@@ -17,4 +17,10 @@ https://codingblast.com/entityframework-core-idesigntimedbcontextfactory/
 https://joonasw.net/view/aspnet-core-2-configuration-changes
 
 From Database:
+Create a project for your new context and then:
+
 Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=SysKitCodeFirstDemo;Trusted_Connection=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+Add-Migration InitialCreate –IgnoreChanges
+EF Core doesn't have it so initial migration is filled and update breaks. Comment it out. 
+
