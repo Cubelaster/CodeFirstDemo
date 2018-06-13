@@ -27,3 +27,6 @@ EF Core doesn't have it so initial migration is filled and update breaks. Commen
 Additionally, we need to register our new context in startup.
 After that, Package Manager needs explicit reference to context
 Update-Database -Context SysKitCodeFirstDemoContext
+
+AutoMapper
+https://stackoverflow.com/questions/40275195/how-to-setup-automapper-in-asp-net-core/40275196
