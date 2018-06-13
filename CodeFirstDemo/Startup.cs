@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using BL.DtoToViewModelMappings;
+using BL.Services.ConcreteImplementations;
+using BL.Services.Contracts;
+using DAL.DatabaseToDtoMappings;
+using DAL.Repository;
+using DAL.Repository.Contracts;
 using DatabasesEntities.Context;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +17,8 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Configuration;
+using FromDatabase.Models;
 
 namespace CodeFirstDemo
 {
@@ -26,13 +34,19 @@ namespace CodeFirstDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SysKitContext>(options => options.UseSqlServer("SysKitCodeFirstDemo",
+            services.AddDbContext<SysKitContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("SysKitConnection"), 
                 opts => opts.MigrationsAssembly("DatabasesEntities")));
 
-            services.AddDbContext<SysKitContext>(options => options.UseSqlServer("SysKitCodeFirstDemoContext",
-                opts => opts.MigrationsAssembly("FromDatabase")));
+            services.AddDbContext<SysKitCodeFirstDemoContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("SysKitConnection"), 
+            opts => opts.MigrationsAssembly("FromDatabase")));
 
-            services.AddAutoMapper();
+
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+
+            services.AddAutoMapper(typeof(DtoMappingsProfile), typeof(ViewModelMappings));
 
             // TODO
             services.AddMvc().AddFluentValidation();

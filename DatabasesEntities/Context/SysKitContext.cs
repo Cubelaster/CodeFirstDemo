@@ -6,11 +6,11 @@ using System;
 
 namespace DatabasesEntities.Context
 {
-    public class SysKitContext : DbContext, ISysKitContext
+    public class SysKitContext : DbContext
     {
         #region Constructors
 
-        public SysKitContext(DbContextOptions options) : base(options) { }
+        public SysKitContext(DbContextOptions<SysKitContext> options) : base(options) { }
 
         #endregion Constructors
 

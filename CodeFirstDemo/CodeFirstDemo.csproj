@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="4.0.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="7.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
@@ -26,7 +27,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj" />
-    <ProjectReference Include="..\FromDatabase\FromDatabase.csproj" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
